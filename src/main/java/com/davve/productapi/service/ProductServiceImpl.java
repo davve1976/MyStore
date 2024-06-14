@@ -20,52 +20,52 @@ public class ProductServiceImpl implements ProductService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductServiceImpl.class);
 
-    private final ProductRepository productRepository;
+	private final ProductRepository productRepository;
 
-    @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+	@Autowired
+	public ProductServiceImpl(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
 
-    @Override
-    public Product getProductById(Long id) {
-    	// to be implemented....get from database
-        Optional<Product> optionalProduct = productRepository.findById(id);
-        return optionalProduct.orElse(getProductByIdFromFakeStore(getAllProductsFromFakeStore(), id));
-    }
+	@Override
+	public Product getProductById(Long id) {
+		// to be implemented....get from database
+		Optional<Product> optionalProduct = productRepository.findById(id);
+		return optionalProduct.orElse(getProductByIdFromFakeStore(getAllProductsFromFakeStore(), id));
+	}
 
-    @Override
-    public List<Product> getAllProducts() {
-    	// to be implemented....get from database
-    	List<Product> optionalProduct = productRepository.findAll();
-        return !optionalProduct.isEmpty() ? optionalProduct : getAllProductsFromFakeStore();
-    }
+	@Override
+	public List<Product> getAllProducts() {
+		// to be implemented....get from database
+		List<Product> optionalProduct = productRepository.findAll();
+		return !optionalProduct.isEmpty() ? optionalProduct : getAllProductsFromFakeStore();
+	}
 
-    private Product getProductByIdFromFakeStore(List<Product> products, Long id) {
+	private Product getProductByIdFromFakeStore(List<Product> products, Long id) {
 		return FakeStoreResource.getProductById(products, id);
 	}
 
-    private List<Product> getAllProductsFromFakeStore() {
-        try {
+	private List<Product> getAllProductsFromFakeStore() {
+		try {
 			return FakeStoreResource.getAllProducts();
 		} catch (URISyntaxException e) {
 			LOGGER.error("Unable to get all products", e);
 		}
-        return Collections.emptyList();
-    }
+		return Collections.emptyList();
+	}
 
-    @Override
-    public void saveProduct(Product product) {
-        productRepository.save(product);
-    }
+	@Override
+	public void saveProduct(Product product) {
+		productRepository.save(product);
+	}
 
-    @Override
-    public void updateProduct(Product product) {
-        productRepository.save(product);
-    }
+	@Override
+	public void updateProduct(Product product) {
+		productRepository.save(product);
+	}
 
-    @Override
-    public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
-    }
+	@Override
+	public void deleteProduct(Long id) {
+		productRepository.deleteById(id);
+	}
 }
