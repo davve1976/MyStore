@@ -1,13 +1,13 @@
-package com.davve.mystore;
+package com.davve.productapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MystoreApplicationTests {
+class ProductApiApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+//	@Test
+//	void contextLoads() {
+//	}
 
 }
