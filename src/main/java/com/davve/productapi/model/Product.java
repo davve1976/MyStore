@@ -11,23 +11,20 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String description;
     private double price;
 
-    // Constructors
     public Product() {
-        // Empty constructor needed for JPA
     }
 
-    public Product(String name, String description, double price) {
-        this.name = name;
+    public Product(Long id, String name, String description, double price) {
+    	this.id = id;
+    	this.name = name;
         this.description = description;
         this.price = price;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -59,6 +56,4 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
-
-    // Other methods (if needed) can be added here
 }

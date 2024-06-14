@@ -40,7 +40,6 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
-    // Additional method to get all products (optional)
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
